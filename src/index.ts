@@ -7,6 +7,11 @@ import { createAuthor, updateAuthor, deleteAuthor } from './application/commands
 import { getAllAuthors, getAuthorById } from './application/queries/authorQueries'
 import { createBook, deleteBook, updateBook } from './application/commands/bookCommands'
 import { getAllBooks, getBookById } from './application/queries/bookQueries'
+import { CreateUserCommand } from './application/commands/create-user.command'
+import { CreateAuthorCommand } from './application/commands/create-author.command'
+import { CreateBookCommand } from './application/commands/create-book.command'
+import { GetBooksQuery } from './application/queries/get-books.query'
+import { User } from './entities/user'
 
 dotenv.config()
 
@@ -44,3 +49,33 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
 })
+
+async function main() {
+  const user = await CreateUserCommand.execute({
+    name: 'John Doe',
+    email: 'johndoe@gmail.com'
+  })
+
+  const author = CreateAuthorCommand.execute({
+    name: 'John Doe',
+    email: 'johndoe@gmail.com',
+    penName: 'JD'
+  })
+
+  CreateBookCommand.execute({
+    title: 'The Great Book',
+    userId: user,
+    authorId: author
+  })
+
+  CreateBookCommand.execute({
+    title: 'The Great Book 2',
+    userId: user,
+    authorId: author
+  })
+
+  const books = GetBooksQuery.execute()
+  console.log(books)
+}
+
+main()

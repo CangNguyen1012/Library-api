@@ -20,7 +20,7 @@ model User {
   books     Book[]   @relation("UserBooks")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  authors   Author?  @relation("UserAuthors")
+  author   Author?  @relation("UserAuthors")
 }
 
 model Book {

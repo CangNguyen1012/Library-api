@@ -1,20 +1,12 @@
 import Database from '~/database'
 import { User } from '~/entities/user'
-
-interface ParamsCreateUserCommand {
-  name: string
-  email: string
-}
+import { IUserRepo } from '~/infracstructure/repositories/user.repo'
 
 export class CreateUserCommand {
-  private constructor() {}
+  constructor(private userRepo: IUserRepo) {}
 
-  static execute(params: ParamsCreateUserCommand): User {
-    const id = '1'
-    const { name, email } = params
-
-    const user = new User(id, name, email)
-
+  async execute(name: string, email: string) {
+    const user = User.create((Database.users.length + 1).toString(), name, email)
     Database.users.push(user)
     return user
   }

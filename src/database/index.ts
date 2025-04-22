@@ -7,5 +7,5 @@ export default class Database {
   public static authors: Author[] = []
   public static users: User[] = []
 
-  public static bookIdCounter: number = 1
+  public static bookIdCounter = 1
 }

@@ -1,5 +1,5 @@
 import express from 'express'
-import { PrismaClient } from '@prisma/client'
+// import { PrismaClient } from '@prisma/client'
 import dotenv from 'dotenv'
 import { CreateUserCommand } from './application/commands/create-user.command'
 import { CreateAuthorCommand } from './application/commands/create-author.command'
@@ -12,7 +12,7 @@ import { UserRepo } from './infracstructure/repositories/user-repo.impl'
 dotenv.config()
 
 const app = express()
-const prisma = new PrismaClient()
+// const prisma = new PrismaClient()
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())

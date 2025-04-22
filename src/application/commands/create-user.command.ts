@@ -1,3 +1,4 @@
+// src/application/commands/create-user.command.ts
 import Database from '~/database'
 import { User } from '~/entities/user'
 import { IUserRepo } from '~/infracstructure/repositories/user.repo'

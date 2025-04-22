@@ -1,3 +1,4 @@
+// src/database/index.ts
 import { Author } from '~/entities/author'
 import { Book } from '~/entities/book'
 import { User } from '~/entities/user'

@@ -1,3 +1,4 @@
+// src/application/queries/get-authors.query.ts
 import Database from '~/database'
 
 export class GetAuthorsQuery {

@@ -1,3 +1,4 @@
+// src/entities/book.ts
 import { Author } from './author'
 import { User } from './user'
 

@@ -1,3 +1,4 @@
+// src/entities/author.ts
 import { User } from './user'
 
 export class Author extends User {

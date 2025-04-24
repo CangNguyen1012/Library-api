@@ -23,4 +23,22 @@ export class AuthorRepo implements IAuthorRepo {
     const author = this.authors.find((author) => author.id === id)
     return author || null
   }
+
+  async update(author: Author): Promise<Author> {
+    const index = this.authors.findIndex((a) => a.id === author.id)
+    if (index !== -1) {
+      this.authors[index] = author
+      return author
+    }
+    throw new Error('Author not found')
+  }
+
+  async delete(id: string): Promise<void> {
+    const index = this.authors.findIndex((author) => author.id === id)
+    if (index !== -1) {
+      this.authors.splice(index, 1)
+    } else {
+      throw new Error('Author not found')
+    }
+  }
 }
